@@ -58,7 +58,7 @@ export function tryLoadPresetFromURL(): { name: string; data: PresetData } | nul
   const p = new URL(location.href).searchParams.get("preset");
   if (!p) return null;
   try {
-    const { n, d } = JSON.parse(decodeURIComponent(escape(atob(p))))) as any;
+    const { n, d } = JSON.parse(decodeURIComponent(escape(atob(p)))) as any;
     if (!n || !d) return null;
     return { name: String(n), data: d as PresetData };
   } catch { return null; }

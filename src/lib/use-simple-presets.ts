@@ -3,7 +3,7 @@ import { listPresets, savePreset, loadPreset, deletePreset, exportPresets, impor
 
 export function useSimplePresets(
   appId: string,
-  currentPresetData: () => any),
+  currentPresetData: () => any,
   applyPreset: (d: any) => void,
   showMessage: (m: string, ms?: number) => void
 ) {
@@ -36,11 +36,11 @@ export function useSimplePresets(
       savePreset(appId, n, currentPresetData());
       setPresets(listPresets(appId));
       setPresetName('');
-      showMessage(`Saved "${n}``, 2000);
+      showMessage(`Saved "${n}"`, 2000);
     },
     load: (id: string) => {
       const d = loadPreset(appId, id);
-      if (!di) return showMessage('Preset not found', 2000);
+      if (!d) return showMessage('Preset not found', 2000);
       applyPreset(d);
       showMessage(`Loaded "${id}"`, 2000);
     },
